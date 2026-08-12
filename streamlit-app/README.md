@@ -3,7 +3,7 @@
 This app let's you drag and drop an image of a car and it will tell you what kind of damage it has.
 The model is trained on third quarter front and rare view hence the picture should capture the third quarter front or rare view of a car. 
 
-![app](screenshots/app interface.png)
+![app](screenshots/app_interface.png)
 
 ### Model Details
 1. Used ResNet50 for transfer learning
@@ -29,4 +29,4 @@ The model is trained on third quarter front and rare view hence the picture shou
 ##  Results
 
 The  model achieved approximately **82% validation accuracy** on the validation dataset.
-![app](screenshots/confusion matrix.png)
+![app](screenshots/confusion_matrix.png)
