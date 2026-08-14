@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 from torchvision import transforms,models
 from PIL import Image
+from io import BytesIO
 model=None
 
 class CarClassifierUsingResNet(nn.Module):
@@ -21,9 +22,9 @@ class CarClassifierUsingResNet(nn.Module):
         return x
 classes=['F_Breakage', 'F_Crushed', 'F_Normal', 'R_Breakage', 'R_Crushed', 'R_Normal']
 
-def predict_damage(image_path):
+def predict_damage(image_bytes):
     global model
-    image=Image.open(image_path).convert('RGB')
+    image=Image.open(BytesIO(image_bytes)).convert('RGB')
     transform = transforms.Compose([transforms.Resize((224,224)),transforms.ToTensor(),transforms.Normalize([0.485,0.456,0.406],[0.229,0.224,0.225])])
     tensor_image=transform(image).unsqueeze(0)
     if model is None:
