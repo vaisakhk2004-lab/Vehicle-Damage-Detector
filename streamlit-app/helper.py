@@ -31,7 +31,7 @@ def predict_damage(image_bytes):
     tensor_image=transform(image).unsqueeze(0)
     if model is None:
        model = CarClassifierUsingResNet(6)
-       model.load_state_dict(torch.load(MODEL_PATH))
+       model.load_state_dict(torch.load(MODEL_PATH, map_location="cpu"))
        model.eval()
     with torch.no_grad():
         output=model(tensor_image)
