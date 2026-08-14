@@ -1,10 +1,12 @@
 import torch
 import torch.nn as nn
 from torchvision import transforms,models
+from pathlib import Path
 from PIL import Image
 from io import BytesIO
 model=None
-
+MODEL_PATH = Path(__file__).resolve().parent / "model" / "model.pth"
+print(MODEL_PATH)
 class CarClassifierUsingResNet(nn.Module):
 
     def __init__(self, num_of_class, dropout=0.4):
@@ -29,7 +31,7 @@ def predict_damage(image_bytes):
     tensor_image=transform(image).unsqueeze(0)
     if model is None:
        model = CarClassifierUsingResNet(6)
-       model.load_state_dict(torch.load(r"C:\Users\vaisa\Downloads\project damage detection\streamlit-app\model\model.pth"))
+       model.load_state_dict(torch.load(MODEL_PATH))
        model.eval()
     with torch.no_grad():
         output=model(tensor_image)

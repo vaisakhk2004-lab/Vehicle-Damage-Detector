@@ -1,6 +1,5 @@
 import streamlit as st
 from helper import predict_damage
-import re
 st.title('🚗 Vehicle Damage Detector',text_alignment='center')
 uploaded_image=st.file_uploader('Upload File',type=['jpg','png','jpeg'])
 if uploaded_image:
@@ -19,8 +18,3 @@ if uploaded_image:
             st.info('Rear crushed')
     else:
         st.info('No Damage!')
-
-
-
-
-
